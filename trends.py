@@ -51,6 +51,19 @@ print(set_iphone_date - set_stock_date)
 #merge stock volume and search volume data
 df_comp = df.join(df_stock, how='inner')
 
+#calculate the percentage changes
+pct_delta = df_comp.pct_change()
+
+#correlation
+correlation = pct_delta['iphone (Worldwide)'].corr(pct_delta['Volume'])
+
+#scatter plot of the relationship
+plt.scatter(pct_delta['iphone (Worldwide)'], pct_delta['Volume'])
+plt.show()
+
+
+
+
 
 
 
